@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html *ngIf="!this.location.path().includes('login')">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<body>
+
+<div class="navbar">
+  <a  href="/dashboard"><i class="fa fa-fw fa-home"></i> Home</a>
+  <a href="/employees"><i class="fa fa-fw fa-user"></i> Employee Details</a>
+  <a style="float:right" class="fa fa-sign-out" routerLink= "/login" (click)="logout()"> Logout</a>
+</div>
+
+</body>
+</html> 

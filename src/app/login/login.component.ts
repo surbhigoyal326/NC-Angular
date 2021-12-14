@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormGroup, FormControl, Validators } from '@angular/forms';
 //import { MyserviceService } from '../myservice.service';
-import { Router, ActivatedRoute } from '@angular/router';
-import { EmpServiceService } from '../emp-service.service';
+import { Router } from '@angular/router';
+import { LoginService } from './login.service';
 
 @Component({
   selector: 'app-login',
@@ -12,11 +12,11 @@ import { EmpServiceService } from '../emp-service.service';
 export class LoginComponent implements OnInit {
 
   loginForm: FormGroup;
-  constructor(private _myservice: EmpServiceService,
-    private _router: Router,
-    private _activatedRoute: ActivatedRoute) {
+  errorMessage!: string;
+  constructor(private _loginservice: LoginService,
+    private _router: Router) {
     this.loginForm = new FormGroup({
-      email: new FormControl('', Validators.required),
+      username: new FormControl('', Validators.required),
       password: new FormControl('', Validators.required)
     });
 
@@ -32,13 +32,13 @@ export class LoginComponent implements OnInit {
   login() {
     
     if (this.loginForm.valid) {
-      this._myservice.login(this.loginForm.value)
+      this._loginservice.login(this.loginForm.value)
         .subscribe(
           data => {
             localStorage.setItem('token', data.toString());
             this._router.navigate(['/dashboard']);
           },
-          error => { }
+          error =>{ this.errorMessage = error.error.message ;   }  
         );
     }
   }

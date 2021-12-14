@@ -5,24 +5,40 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { DashboardComponent } from './dashboard/dashboard.component';
 import { TokenInterceptorService } from './token-interceptor.service';
-import { EmpServiceService } from './emp-service.service';
+import { LoginService } from './login/login.service';
+import {InputTextModule} from 'primeng/inputtext';
+import {ButtonModule} from 'primeng/button';
+import {CardModule} from 'primeng/card';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FooterComponent } from './shared/footer/footer.component';
+import { AuthGuardService } from './auth-guard.service';
+import { CommonModule, LocationStrategy } from '@angular/common';
+import { HeaderComponent } from './shared/header/header.component';
+import { RowHoverDirective } from './shared/directives/rowHover.directive';
 
 @NgModule({
   declarations: [
     AppComponent, 
-    LoginComponent, DashboardComponent
+    LoginComponent,
+    FooterComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    CommonModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    InputTextModule,
+    ButtonModule,
+    CardModule
   ],
-  providers: [ EmpServiceService,
+  providers: [ LoginService, AuthGuardService, Location,
     { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptorService, multi: true }],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  exports:[HeaderComponent]
 })
 export class AppModule { }

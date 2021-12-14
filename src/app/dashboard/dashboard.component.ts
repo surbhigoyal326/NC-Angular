@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { EmpServiceService } from '../emp-service.service';
+import { AuthGuardService } from '../auth-guard.service';
+import { LoginService } from '../login/login.service';
+import { Product } from './model/product.model';
+import { ProductService } from './service/product.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -9,17 +12,41 @@ import { EmpServiceService } from '../emp-service.service';
 })
 export class DashboardComponent implements OnInit {
 
-  username = '';
-  constructor(private myService: EmpServiceService,
+  product$!: Promise<Product[]>;;
+  responsiveOptions: any;
+  username: string | undefined;
+  constructor(private loginService: LoginService,
+    private productService: ProductService,
   private _router: Router) { 
-    this.myService.getUserName()
+    this.username= '';
+  this.loginService.getUserName()
     .subscribe(
       data => this.username= data.toString(),
       error => this._router.navigate(['/login'])
     )
+
+    this.responsiveOptions = [
+      {
+          breakpoint: '1024px',
+          numVisible: 3,
+          numScroll: 3
+      },
+      {
+          breakpoint: '768px',
+          numVisible: 2,
+          numScroll: 2
+      },
+      {
+          breakpoint: '560px',
+          numVisible: 1,
+          numScroll: 1
+      }
+  ];
   }
 
-  ngOnInit(): void {
-  }
+  ngOnInit() {
+		this.product$ = this.productService.getProductsSmall();
+		
+    }
 
 }
