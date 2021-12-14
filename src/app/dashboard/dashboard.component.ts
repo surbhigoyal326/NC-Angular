@@ -14,16 +14,10 @@ export class DashboardComponent implements OnInit {
 
   product$!: Promise<Product[]>;;
   responsiveOptions: any;
-  username: string | undefined;
+  
   constructor(private loginService: LoginService,
     private productService: ProductService,
   private _router: Router) { 
-    this.username= '';
-  this.loginService.getUserName()
-    .subscribe(
-      data => this.username= data.toString(),
-      error => this._router.navigate(['/login'])
-    )
 
     this.responsiveOptions = [
       {

@@ -18,8 +18,6 @@ export class EmployeesComponent implements OnInit {
 
   employee: Employee[]=[];
   serviceData: Employee[]=[];
-
-  username: string | undefined;
   emp!: Employee;
   showDialog!: boolean;
   submitted! : boolean;
@@ -34,12 +32,7 @@ export class EmployeesComponent implements OnInit {
       private messageService: MessageService,
       private confirmationService: ConfirmationService,
       private _router: Router) {
-      this.username= '';
-      this.loginService.getUserName()
-        .subscribe(
-          data => this.username= data.toString(),
-          error => this._router.navigate(['/login'])
-        )
+
         }
        
      

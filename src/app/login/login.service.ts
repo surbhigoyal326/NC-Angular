@@ -6,8 +6,9 @@ import { BASE_URL} from '../shared/constants'
   providedIn: 'root'
 })
 export class LoginService {
+  constructor(private _http: HttpClient) { 
 
-  constructor(private _http: HttpClient) { }
+  }
 
   login(body:any){
     return this._http.post(`${BASE_URL}/users/login`, body,{
@@ -19,6 +20,5 @@ export class LoginService {
     return this._http.get(`${BASE_URL}/users/username`, {
       observe: 'body',
     });
-    
   }
 }

@@ -9,13 +9,13 @@ const routes: Routes = [
 
   { path: 'employees',
    loadChildren: () => import('./employees/employees.module')
-   .then(m => m.EmployeesModule)  
+   .then(m => m.EmployeesModule)  ,
+   canLoad:[AuthGuardService]
   },
   { path: 'dashboard',
   loadChildren: () => import('./dashboard/dashboard.module')
-  .then(m => m.DashboardModule)  }
-    
-
+  .then(m => m.DashboardModule) ,
+  canLoad:[AuthGuardService] }
 ];
 
 @NgModule({
