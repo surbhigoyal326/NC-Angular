@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormGroup, FormControl, Validators } from '@angular/forms';
-//import { MyserviceService } from '../myservice.service';
 import { Router } from '@angular/router';
-import { LoginService } from './login.service';
+import { LoginService } from '../login.service';
 
 @Component({
   selector: 'app-login',
@@ -30,7 +29,7 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    
+
     if (this.loginForm.valid) {
       this._loginservice.login(this.loginForm.value)
         .subscribe(
@@ -38,7 +37,7 @@ export class LoginComponent implements OnInit {
             localStorage.setItem('token', data.toString());
             this._router.navigate(['/dashboard']);
           },
-          error =>{ this.errorMessage = error.error.message ;   }  
+          error => { this.errorMessage = error.error.message; }
         );
     }
   }

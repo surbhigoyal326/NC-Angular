@@ -1,8 +1,5 @@
-import { Location} from '@angular/common';
-import { AfterViewInit, Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
-import { Router } from '@angular/router';
-import { AuthGuardService } from 'src/app/auth-guard.service';
-import { LoginService } from 'src/app/login/login.service';
+import { Location } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -10,17 +7,17 @@ import { LoginService } from 'src/app/login/login.service';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-showMenu!: boolean;
-  constructor(public location:Location) {
+  showMenu!: boolean;
+  constructor(public location: Location) {
 
   }
 
   ngOnInit(): void {
   }
 
-  logout(){
+  logout() {
     localStorage.removeItem('token');
-    this.showMenu=false;
+    this.showMenu = false;
   }
 
 }

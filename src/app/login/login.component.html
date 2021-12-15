@@ -1,34 +1,34 @@
-<html style ="background-image: url('../assets/images/galleria1.jpg')">
-<body >
-<div class="formcontainer">
-    <div class="formbody">
-        <form style="width:100%;" [formGroup]="loginForm">
-            <span class="p-error" *ngIf="errorMessage">{{errorMessage}}</span> 
-            <div class="header">
-               <h2>Welcome</h2> 
-            </div>
-            
-            <div class="form-group">
+<html style="background-image: url('../assets/images/galleria1.jpg')">
+
+<body>
+    <div class="formcontainer">
+        <div class="formbody">
+            <form style="width:100%;" [formGroup]="loginForm">
+                <span class="p-error" *ngIf="errorMessage">{{errorMessage}}</span>
+                <div class="header">
+                    <h2>Welcome</h2>
+                </div>
+
+                <div class="form-group">
                     <h4>Username</h4>
-                    <input type="text" formControlName="username" pInputText class="p-inputtext-sm" placeholder="Email"> 
-                
-                <span class="p-error" *ngIf="isValid('username')">Username cannot be blank</span> 
-            </div>
+                    <input type="text" formControlName="username" pInputText class="p-inputtext-sm" placeholder="Email">
 
-    <div class="form-group">
-        <h4>Password</h4>
-        <input type="password" formControlName="password" pInputText class="p-inputtext-sm" placeholder="Password"> 
-    
-    <span class="p-error" *ngIf="isValid('password')">Password cannot be blank</span> 
-</div>
-            <div style="margin-top:40px;">
-                <p-button label="Log IN" (click) = "login()"></p-button>
-            </div>
-        </form>
+                    <span class="p-error" *ngIf="isValid('username')">Username cannot be blank</span>
+                </div>
+
+                <div class="form-group">
+                    <h4>Password</h4>
+                    <input type="password" formControlName="password" pInputText class="p-inputtext-sm"
+                        placeholder="Password">
+
+                    <span class="p-error" *ngIf="isValid('password')">Password cannot be blank</span>
+                </div>
+                <div style="margin-top:40px;">
+                    <p-button label="Log IN" (click)="login()"></p-button>
+                </div>
+            </form>
+        </div>
     </div>
-</div>
 </body>
+
 </html>
-
-
-

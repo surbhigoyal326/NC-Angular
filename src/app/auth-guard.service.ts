@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { CanActivate, CanLoad, Router } from '@angular/router';
 import { catchError, map, of } from 'rxjs';
-import { LoginService } from './login/login.service';
+import { LoginService } from './login.service';
 
 @Injectable({
   providedIn: 'root'

@@ -6,8 +6,6 @@ import { DashboardComponent } from './dashboard.component';
 import {CarouselModule} from 'primeng/carousel';
 import {ButtonModule} from 'primeng/button';
 import { ProductService } from './service/product.service';
-import { AuthGuardService } from '../auth-guard.service';
-
 
 @NgModule({
   declarations: [
@@ -20,7 +18,7 @@ import { AuthGuardService } from '../auth-guard.service';
     ButtonModule
   ],
   providers: [
-    ProductService, AuthGuardService
+    ProductService
   ]
 })
 export class DashboardModule { }

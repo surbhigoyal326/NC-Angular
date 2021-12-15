@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Product } from '../model/product.model';
+import { BASE_URL} from '../../shared/constants'
 
 
 
@@ -50,5 +51,12 @@ export class ProductService {
         .then(res => <Product[]>res.data)
         .then(data => { return data; });
     }
+
+    getProducts(){
+        return this.http.get<any>(`${BASE_URL}/products/getProducts`)
+        .toPromise()
+        .then(res => <Product[]>res.data)
+        .then(data => { return data; });
+      }
 
 }
