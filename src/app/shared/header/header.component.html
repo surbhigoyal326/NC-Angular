@@ -5,11 +5,14 @@
 
 <body>
 
-<div class="navbar">
-  <a  href="/dashboard"><i class="fa fa-fw fa-home"></i> Home</a>
-  <a href="/employees"><i class="fa fa-fw fa-user"></i> Employee Details</a>
-  <a style="float:right" class="fa fa-sign-out" routerLink= "/login" (click)="logout()"> Logout</a>
-</div>
+  <div class="navbar">
+    <a [ngClass]="{'active' : this.location.path().includes('dashboard')}" href="/dashboard">
+      <i class="fa fa-fw fa-home"></i> Home</a>
+    <a href="/employees" [ngClass]="{'active' : this.location.path().includes('employees')}">
+      <i class="fa fa-fw fa-user"></i> Employee Details</a>
+    <a style="float:right" class="fa fa-sign-out" routerLink="/login" (click)="logout()"> Logout</a>
+  </div>
 
 </body>
-</html> 
+
+</html>
