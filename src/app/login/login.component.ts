@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { map } from 'rxjs';
 import { LoginService } from '../login.service';
 
 @Component({
@@ -11,6 +12,8 @@ import { LoginService } from '../login.service';
 export class LoginComponent implements OnInit {
 
   loginForm: FormGroup;
+  responseData: any;
+
   errorMessage!: string;
   constructor(private _loginservice: LoginService,
     private _router: Router) {
@@ -32,9 +35,14 @@ export class LoginComponent implements OnInit {
 
     if (this.loginForm.valid) {
       this._loginservice.login(this.loginForm.value)
+    //  .pipe(map(data => this.responseData.refreshToken = data))
         .subscribe(
-          data => {
-            localStorage.setItem('token', data.toString());
+          data  => {
+            this.responseData = data;
+            localStorage.setItem('refreshToken', this.responseData.refreshToken.toString());
+            localStorage.setItem('token', this.responseData.token.toString());
+            console.log(localStorage.getItem('refreshToken'))
+            console.log(localStorage.getItem('token'))
             this._router.navigate(['/dashboard']);
           },
           error => { this.errorMessage = error.error.message; }

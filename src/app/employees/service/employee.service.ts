@@ -24,4 +24,10 @@ getAllEmployee(){
   .then(data => { return data; });
 }
 
+// checkEmail(emailId:any){
+//   return this.http.get<any>(`${BASE_URL}/employee/checkEmail/${emailId}`)
+//   .toPromise()
+//   .then(data => { return data; });
+// }
+
 }

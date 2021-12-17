@@ -10,9 +10,7 @@ export class LoginService {
   }
 
   login(body: any) {
-    return this._http.post(`${BASE_URL}/users/login`, body, {
-      observe: 'body'
-    });
+    return this._http.post(`${BASE_URL}/users/login`, body);
   }
 
   getUserName() {

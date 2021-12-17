@@ -17,6 +17,7 @@ export class HeaderComponent implements OnInit {
 
   logout() {
     localStorage.removeItem('token');
+    localStorage.removeItem('refreshToken');
     this.showMenu = false;
   }
 
